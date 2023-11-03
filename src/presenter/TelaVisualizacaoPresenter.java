@@ -1,5 +1,8 @@
 package presenter;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import view.TelaVisualizacaoView;
 
 public class TelaVisualizacaoPresenter {
@@ -7,9 +10,16 @@ public class TelaVisualizacaoPresenter {
 
     public TelaVisualizacaoPresenter(TelaVisualizacaoView view) {
         this.view = view;
+        this.view.getLimparButton().addActionListener((ActionListener) new LimparButtonListener());
     }
 
-    public void exibirFuncionario(String nome, String sobrenome, String cargo) {
-        view.setFuncionario(nome, sobrenome, cargo);
+    private class LimparButtonListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            // TODO Auto-generated method stub
+            throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
+        }
+    
     }
 }

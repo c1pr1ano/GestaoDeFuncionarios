@@ -6,6 +6,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.SwingUtilities;
 
+import model.FuncionarioCollection;
 import presenter.TelaConsultaPresenter;
 import presenter.TelaInclusaoPresenter;
 import presenter.TelaPrincipalPresenter;
@@ -24,10 +25,13 @@ public class Main {
             TelaConsultaView telaConsultaView = new TelaConsultaView();
             TelaVisualizacaoView telaVisualizacaoView = new TelaVisualizacaoView();
 
+            // Crie uma instância de FuncionarioCollection
+            FuncionarioCollection funcionarioCollection = new FuncionarioCollection();
+
             // Crie as instâncias dos apresentadores (Presenters) e conecte-os às visualizações
             TelaPrincipalPresenter telaPrincipalPresenter = new TelaPrincipalPresenter(telaPrincipalView);
-            TelaInclusaoPresenter telaInclusaoPresenter = new TelaInclusaoPresenter(telaInclusaoView);
-            TelaConsultaPresenter telaConsultaPresenter = new TelaConsultaPresenter(telaConsultaView);
+            TelaInclusaoPresenter telaInclusaoPresenter = new TelaInclusaoPresenter(telaInclusaoView, funcionarioCollection);
+            TelaConsultaPresenter telaConsultaPresenter = new TelaConsultaPresenter(telaConsultaView, telaVisualizacaoView, funcionarioCollection);
             TelaVisualizacaoPresenter telaVisualizacaoPresenter = new TelaVisualizacaoPresenter(telaVisualizacaoView);
 
             // Adicione itens de menu à Tela Principal
@@ -42,7 +46,6 @@ public class Main {
 
             telaPrincipalView.setJMenuBar(menuBar);
 
-            // Defina os ouvintes de ação para os itens do menu
             menuInclusao.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -51,8 +54,6 @@ public class Main {
             });
 
             telaPrincipalView.setVisible(true);
-
-            // Outras lógicas podem ser implementadas para exibir outras telas e gerenciar a interação entre elas.
         });
     }
 }

@@ -1,13 +1,23 @@
 package view;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
+import java.util.List;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+
+import model.Funcionario;
+
 
 public class TelaConsultaView {
     private JFrame frame;
     private JTable tabela;
     private JButton visualizarButton;
+    private JButton removerButton; // Botão para remover
 
     public TelaConsultaView() {
         frame = new JFrame("Consulta de Funcionários");
@@ -21,9 +31,11 @@ public class TelaConsultaView {
         JScrollPane scrollPane = new JScrollPane(tabela);
 
         visualizarButton = new JButton("Visualizar");
+        removerButton = new JButton("Remover"); // Novo botão de remoção
 
         panel.add(scrollPane, BorderLayout.CENTER);
         panel.add(visualizarButton, BorderLayout.SOUTH);
+        panel.add(removerButton, BorderLayout.SOUTH); // Adicione o botão de remoção
 
         frame.add(panel);
 
@@ -34,6 +46,10 @@ public class TelaConsultaView {
         visualizarButton.addActionListener(listener);
     }
 
+    public void setRemoverButtonListener(ActionListener listener) {
+        removerButton.addActionListener(listener);
+    }
+
     public JTable getTabela() {
         return tabela;
     }
@@ -42,6 +58,7 @@ public class TelaConsultaView {
         return tabela.getSelectedRow();
     }
 
-    public void setVisible(boolean b) {
+    // Método para atualizar a tabela com dados
+    public void atualizarTabela(List<Funcionario> funcionarios) {
     }
 }

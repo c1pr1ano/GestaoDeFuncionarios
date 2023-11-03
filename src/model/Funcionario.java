@@ -4,6 +4,7 @@ public class Funcionario {
     private String nome;
     private String sobrenome;
     private String cargo;
+    public String getCargo;
 
     public Funcionario(String nome, String sobrenome, String cargo) {
         this.nome = nome;

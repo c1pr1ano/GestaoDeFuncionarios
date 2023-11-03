@@ -10,6 +10,7 @@ public class TelaVisualizacaoView {
     private JTextField nomeField;
     private JTextField sobrenomeField;
     private JTextField cargoField;
+    private JButton limparButton; // Novo botão para limpar campos
 
     public TelaVisualizacaoView() {
         frame = new JFrame("Visualização de Funcionário");
@@ -17,7 +18,7 @@ public class TelaVisualizacaoView {
         frame.setSize(300, 200);
 
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(3, 2));
+        panel.setLayout(new GridLayout(4, 2));
 
         JLabel nomeLabel = new JLabel("Nome:");
         nomeField = new JTextField(20);
@@ -31,21 +32,37 @@ public class TelaVisualizacaoView {
         cargoField = new JTextField(20);
         cargoField.setEditable(false);
 
+        limparButton = new JButton("Limpar Campos");
+
         panel.add(nomeLabel);
         panel.add(nomeField);
         panel.add(sobrenomeLabel);
         panel.add(sobrenomeField);
         panel.add(cargoLabel);
         panel.add(cargoField);
+        panel.add(limparButton);
 
         frame.add(panel);
 
-        frame.setVisible(true);
+        frame.setVisible(false);
     }
 
     public void setFuncionario(String nome, String sobrenome, String cargo) {
         nomeField.setText(nome);
         sobrenomeField.setText(sobrenome);
         cargoField.setText(cargo);
+    }
+
+    public void limparCampos() {
+        nomeField.setText("");
+        sobrenomeField.setText("");
+        cargoField.setText("");
+    }
+
+    public JButton getLimparButton() {
+        return limparButton;
+    }
+
+    public void setVisible(boolean b) {
     }
 }
